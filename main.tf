@@ -1,11 +1,9 @@
-resource "azurerm_app_service_plan" "gaia_app_service_plan" {
-  name                = var.app_service_plan_name
+module "plan" {
+  source              = "/plan"
   location            = var.location
   resource_group_name = var.resource_group_name
-  kind                = var.app_plan_kind
-  reserved            = var.app_plan_reservation
-  sku {
-    tier = var.sku_tier
-    size = var.sku_size
-  }
+  app_plan_kind       = var.app_plan_kind
+  app_plan_reservation = var.app_plan_reservation
+  sku_tier            = var.sku_tier
+  sku_size            = var.sku_size
 }
